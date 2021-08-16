@@ -17,6 +17,10 @@
       "description": "Order Management Station API v.2 for BICYCLE group"
     },
     {
+      "name": "API.v2.BIO",
+      "description": "Order Management Station API v.2 for BIO group"
+    },
+    {
       "name": "API.v2.LIGHT",
       "description": "Order Management Station API v.2 for LIGHT group"
     },
@@ -1882,6 +1886,1049 @@
         "deprecated": false
       }
     },
+    "/api/v2/bio/aggregation": {
+      "post": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Identification Code Aggregation Report (\u041E\u0442\u0447\u0435\u0442 \u043E\u0431 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u041A\u041C)",
+        "operationId": "sendAggregationReportUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "aggregationReportDto",
+            "description": "Aggregation Data (\u0421\u0432\u0435\u0434\u0435\u043D\u0438\u044F \u043E\u0431 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u041A\u041C)",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AggregationReportDtoBio"
+            }
+          },
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "userName",
+            "in": "header",
+            "description": "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
+            "required": false,
+            "type": "string",
+            "default": "API"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unique OMS Report ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043E\u0442\u0447\u0435\u0442\u0430 \u043E\u0431 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438)",
+            "schema": {
+              "$ref": "#/definitions/ReportResult"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/aggregation/info": {
+      "get": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Get aggregation info (\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 \u043E\u0431 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u041A\u041C)",
+        "operationId": "getAggregationInfoUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "unitSerialNumber",
+            "in": "query",
+            "description": "Aggregation unit number (\u041A\u041C \u0430\u0433\u0440\u0435\u0433\u0430\u0442\u0430)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Status (\u0421\u0442\u0430\u0442\u0443\u0441 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u0438)",
+            "schema": {
+              "$ref": "#/definitions/AggregationInfo"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "404": {
+            "description": "Request failed. Aggregation unit not found. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0410\u0433\u0440\u0435\u0433\u0430\u0442 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/buffer/close": {
+      "post": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u043F\u043E\u0434\u0437\u0430\u043A\u0430\u0437/\u0437\u0430\u043A\u0430\u0437 (Close suborder/order)",
+        "operationId": "closeBufferUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gtin",
+            "in": "query",
+            "description": "Product GTIN (GTIN \u0442\u043E\u0432\u0430\u0440\u0430, \u043F\u043E \u043A\u043E\u0442\u043E\u0440\u043E\u043C\u0443 \u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044F \u043F\u0440\u0435\u043A\u0440\u0430\u0442\u0438\u0442\u044C \u0432\u044B\u0434\u0430\u0447\u0443 \u041A\u041C)",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "lastBlockId",
+            "in": "query",
+            "description": "Identifier of last sent code block (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0433\u043E \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u043D\u043E\u0433\u043E \u0431\u043B\u043E\u043A\u0430 \u043A\u043E\u0434\u043E\u0432)",
+            "required": false,
+            "type": "string",
+            "default": "0",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "Unique OMS Order ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0431\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437\u0430 \u043D\u0430 \u044D\u043C\u0438\u0441\u0441\u0438\u044E \u041A\u041C)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Status (\u0421\u0442\u0430\u0442\u0443\u0441 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u0438)",
+            "schema": {
+              "$ref": "#/definitions/OMSIdentifier"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "404": {
+            "description": "Request failed. Buffer not found. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0411\u0443\u0444\u0435\u0440 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/buffer/status": {
+      "get": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Get buffers status for a specific product GTIN (\u0421\u0442\u0430\u0442\u0443\u0441 ,\u0431\u0443\u0444\u0435\u0440\u0430 \u0431\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437\u0430 \u043F\u043E \u0437\u0430\u0434\u0430\u043D\u043D\u043E\u043C\u0443 GTIN)",
+        "operationId": "getBufferStatusUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gtin",
+            "in": "query",
+            "description": "Product GTIN (GTIN \u0442\u043E\u0432\u0430\u0440\u0430, \u043F\u043E \u043A\u043E\u0442\u043E\u0440\u043E\u043C\u0443 \u043D\u0443\u0436\u043D\u043E \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u0441\u0442\u0430\u0442\u0443\u0441 \u0437\u0430\u043A\u0430\u0437\u0430)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "Unique OMS Order ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0431\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437\u0430 \u043D\u0430 \u044D\u043C\u0438\u0441\u0441\u0438\u044E \u041A\u041C)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order Status (\u0421\u0442\u0430\u0442\u0443\u0441 \u0431\u0443\u0444\u0435\u0440\u0430 \u041A\u041C)",
+            "schema": {
+              "$ref": "#/definitions/BufferInfo"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "404": {
+            "description": "Request failed. Buffer not found. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0411\u0443\u0444\u0435\u0440 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/codes": {
+      "get": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Get identification codes for a specific product GTIN (\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435 \u041A\u041C \u0434\u043B\u044F \u0437\u0430\u0434\u0430\u043D\u043D\u043E\u0433\u043E \u0442\u043E\u0432\u0430\u0440\u0430)",
+        "operationId": "getCodesUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gtin",
+            "in": "query",
+            "description": "Product GTIN (GTIN \u0442\u043E\u0432\u0430\u0440\u0430, \u043F\u043E \u043A\u043E\u0442\u043E\u0440\u043E\u043C\u0443 \u0437\u0430\u043F\u0440\u0430\u0448\u0438\u0432\u0430\u044E\u0442\u0441\u044F \u043A\u043E\u0434\u044B)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "lastBlockId",
+            "in": "query",
+            "description": "Identifier of last sent code block (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0433\u043E \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u043D\u043E\u0433\u043E \u0431\u043B\u043E\u043A\u0430 \u043A\u043E\u0434\u043E\u0432)",
+            "required": false,
+            "type": "string",
+            "default": "0",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "Unique OMS Order ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0431\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437\u0430 \u043D\u0430 \u044D\u043C\u0438\u0441\u0441\u0438\u044E \u041A\u041C)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "quantity",
+            "in": "query",
+            "description": "Required identification code quantity (\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0437\u0430\u043F\u0440\u0430\u0448\u0438\u0432\u0430\u0435\u043C\u044B\u0445 \u043A\u043E\u0434\u043E\u0432)",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Identification Code Array (\u041C\u0430\u0441\u0441\u0438\u0432 \u041A\u041C)",
+            "schema": {
+              "$ref": "#/definitions/CodesDto"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "404": {
+            "description": "Request failed. Buffer not found. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0411\u0443\u0444\u0435\u0440 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/codes/blocks": {
+      "get": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Get identification blocks code for a specific product GTIN (\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435 \u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0446\u0438\u043E\u043D\u043D\u044B\u0445 \u0431\u043B\u043E\u043A\u043E\u0432 \u041A\u041C \u0434\u043B\u044F \u0437\u0430\u0434\u0430\u043D\u043D\u043E\u0433\u043E \u0442\u043E\u0432\u0430\u0440\u0430)",
+        "operationId": "getBlocksUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gtin",
+            "in": "query",
+            "description": "Product GTIN (GTIN \u0442\u043E\u0432\u0430\u0440\u0430, \u043F\u043E \u043A\u043E\u0442\u043E\u0440\u043E\u043C\u0443 \u0437\u0430\u043F\u0440\u0430\u0448\u0438\u0432\u0430\u044E\u0442\u0441\u044F \u043A\u043E\u0434\u044B)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "Unique OMS Order ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0431\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437\u0430 \u043D\u0430 \u044D\u043C\u0438\u0441\u0441\u0438\u044E \u041A\u041C)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Identification Block Code Array (\u041C\u0430\u0441\u0441\u0438\u0432 \u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0446\u0438\u043E\u043D\u043D\u044B\u0445 \u0431\u043B\u043E\u043A\u043E\u0432 \u041A\u041C)",
+            "schema": {
+              "$ref": "#/definitions/BlocksDto"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "404": {
+            "description": "Request failed. Buffer not found. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0411\u0443\u0444\u0435\u0440 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/codes/retry": {
+      "get": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Get retry identification codes for a specific product GTIN (\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E \u041A\u041C \u0434\u043B\u044F \u0437\u0430\u0434\u0430\u043D\u043D\u043E\u0433\u043E \u0442\u043E\u0432\u0430\u0440\u0430)",
+        "operationId": "getRetryCodesUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "blockId",
+            "in": "query",
+            "description": "Identifier code block (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0431\u043B\u043E\u043A\u0430 \u043A\u043E\u0434\u043E\u0432)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gtin",
+            "in": "query",
+            "description": "Product GTIN (GTIN \u0442\u043E\u0432\u0430\u0440\u0430, \u043F\u043E \u043A\u043E\u0442\u043E\u0440\u043E\u043C\u0443 \u0437\u0430\u043F\u0440\u0430\u0448\u0438\u0432\u0430\u044E\u0442\u0441\u044F \u043A\u043E\u0434\u044B)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "Unique OMS Order ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0431\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437\u0430 \u043D\u0430 \u044D\u043C\u0438\u0441\u0441\u0438\u044E \u041A\u041C)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Identification Code Array (\u041C\u0430\u0441\u0441\u0438\u0432 \u041A\u041C)",
+            "schema": {
+              "$ref": "#/definitions/CodesDto"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "404": {
+            "description": "Request failed. Buffer not found. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0411\u0443\u0444\u0435\u0440 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/dropout": {
+      "post": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Identification Code Dropout Report (\u041F\u0435\u0440\u0435\u0434\u0430\u0447\u0430 \u043E\u0442\u0447\u0435\u0442\u0430 \u043E \u0432\u044B\u0431\u044B\u0442\u0438\u0438/\u043E\u0442\u0431\u0440\u0430\u043A\u043E\u0432\u043A\u0435 \u041A\u041C)",
+        "operationId": "sendDroppedReportUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "dropoutReportDto",
+            "description": "Identification code dropout report (\u041E\u0442\u0447\u0435\u0442 \u043E \u0432\u044B\u0431\u044B\u0442\u0438\u0438/\u043E\u0442\u0431\u0440\u0430\u043A\u043E\u0432\u043A\u0435)",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DropoutReportDtoBio"
+            }
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "userName",
+            "in": "header",
+            "description": "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
+            "required": false,
+            "type": "string",
+            "default": "API"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unique OMS Report ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043E\u0442\u0447\u0435\u0442\u0430 \u043E \u0432\u044B\u0431\u044B\u0442\u0438\u0438/\u043E\u0442\u0431\u0440\u0430\u043A\u043E\u0432\u043A\u0435 \u0432 \u0421\u0423\u0417)",
+            "schema": {
+              "$ref": "#/definitions/ReportResult"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/orders": {
+      "get": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Status of orders (\u0421\u0442\u0430\u0442\u0443\u0441 \u0431\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437\u043E\u0432)",
+        "operationId": "getOrdersUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u041C\u0430\u0441\u0441\u0438\u0432 \u0441\u0432\u044F\u0437\u0430\u043D\u043D\u044B\u0445 \u0431\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437\u043E\u0432 \u0441 \u0438\u0445 \u0441\u0442\u0430\u0442\u0443\u0441\u0430\u043C\u0438",
+            "schema": {
+              "$ref": "#/definitions/OrdersSummaries"
+            }
+          },
+          "400": {
+            "description": "\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Create Order (\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u0431\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437\u0430)",
+        "operationId": "createOrderUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "in": "body",
+            "name": "orderDto",
+            "description": "Order Description (\u0411\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437)",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderDtoBio"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request result (\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F \u0431\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OrderResult"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/ping": {
+      "get": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "PING OMS (\u041F\u0440\u043E\u0432\u0435\u0440\u043A\u0430 \u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E\u0441\u0442\u0438 \u0421\u0423\u0417)",
+        "operationId": "pingUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request result (\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E\u0441\u0442\u0438 \u0421\u0423\u0417)",
+            "schema": {
+              "$ref": "#/definitions/OMSIdentifier"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/providers": {
+      "get": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435 \u0441\u043F\u0438\u0441\u043A\u0430 \u0441\u0435\u0440\u0432\u0438\u0441-\u043F\u0440\u043E\u0432\u0430\u0439\u0434\u0435\u0440\u043E\u0432, \u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u043E\u0431\u0441\u043B\u0443\u0436\u0438\u0432\u0430\u044E\u0442 \u0423\u041E\u0422",
+        "operationId": "getProvidersUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Information on UOT service providers (\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043F\u043E \u0441\u0435\u0440\u0432\u0438\u0441-\u043F\u0440\u043E\u0432\u0430\u0439\u0434\u0435\u0440\u0430\u043C \u0423\u041E\u0422)",
+            "schema": {
+              "$ref": "#/definitions/ProvidersDto"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "404": {
+            "description": "A technical error has occurred, please try again later (\u0412\u043E\u0437\u043D\u0438\u043A\u043B\u0430 \u0442\u0435\u0445\u043D\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u043E\u0448\u0438\u0431\u043A\u0430, \u043D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u043E \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u044C \u043F\u043E\u043F\u044B\u0442\u043A\u0443 \u043F\u043E\u0437\u0436\u0435)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/receipts": {
+      "get": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435 \u043A\u0432\u0438\u0442\u0430\u043D\u0446\u0438\u0439 \u043F\u043E \u0443\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u043C\u0443 \u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u0443 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430",
+        "operationId": "getReceiptsUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "docId",
+            "in": "query",
+            "description": "docId",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request result (\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F \u0431\u0438\u0437\u043D\u0435\u0441-\u0437\u0430\u043A\u0430\u0437\u0430)",
+            "schema": {
+              "$ref": "#/definitions/ReceiptsDto"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/report/info": {
+      "get": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Get report status information by unique report ID (\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 \u043E \u0441\u0442\u0430\u0442\u0443\u0441\u0435 \u043E\u0442\u0447\u0435\u0442\u0430 \u043F\u043E \u0435\u0433\u043E \u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u0443)",
+        "operationId": "getReportInfoUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "reportId",
+            "in": "query",
+            "description": "Report ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043E\u0442\u0447\u0435\u0442\u0430)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Status (\u0421\u0442\u0430\u0442\u0443\u0441 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u0438)",
+            "schema": {
+              "$ref": "#/definitions/ReportStatusDto"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "404": {
+            "description": "Request failed. Report not found. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041E\u0442\u0447\u0435\u0442 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/utilisation": {
+      "post": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Identification Code Utilisation Report (\u041F\u0435\u0440\u0435\u0434\u0430\u0447\u0430 \u043E\u0442\u0447\u0435\u0442\u0430 \u043E\u0431 \u0443\u0442\u0438\u043B\u0438\u0437\u0430\u0446\u0438\u0438 \u041A\u041C)",
+        "operationId": "sendUtilisationReportUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "userName",
+            "in": "header",
+            "description": "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
+            "required": false,
+            "type": "string",
+            "default": "API"
+          },
+          {
+            "in": "body",
+            "name": "utilisationReportDto",
+            "description": "List of the utilized Identification Codes (\u041D\u0430\u043D\u0435\u0441\u0435\u043D\u043D\u044B\u0435 \u041A\u041C)",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UtilisationReportDtoBio"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unique OMS Report ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043E\u0442\u0447\u0435\u0442\u0430 \u043E\u0431 \u043D\u0430\u043D\u0435\u0441\u0435\u043D\u0438\u0438 \u041A\u041C)",
+            "schema": {
+              "$ref": "#/definitions/ReportResult"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/bio/version": {
+      "get": {
+        "tags": [
+          "API.v2.BIO"
+        ],
+        "summary": "Request OMS and OMS API versions (\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435 \u0432\u0435\u0440\u0441\u0438\u0439 \u0421\u0423\u0417 \u0438 \u0421\u0423\u0417 API)",
+        "operationId": "versionUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "Request result (\u041D\u043E\u043C\u0435\u0440\u0430 \u0432\u0435\u0440\u0441\u0438\u0439 \u0421\u0423\u0417 \u0438 \u0421\u0423\u0417 API)",
+            "schema": {
+              "$ref": "#/definitions/AppVersion"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/api/v2/light/aggregation": {
       "post": {
         "tags": [
@@ -3317,6 +4364,76 @@
         "deprecated": false
       }
     },
+    "/api/v2/lp/dropout": {
+      "post": {
+        "tags": [
+          "API.v2.LP"
+        ],
+        "summary": "Identification Code Dropout Report (\u041F\u0435\u0440\u0435\u0434\u0430\u0447\u0430 \u043E\u0442\u0447\u0435\u0442\u0430 \u043E \u0432\u044B\u0431\u044B\u0442\u0438\u0438/\u043E\u0442\u0431\u0440\u0430\u043A\u043E\u0432\u043A\u0435 \u041A\u041C)",
+        "operationId": "sendDropoutReportUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "dropoutReportDto",
+            "description": "Identification code dropout report (\u041E\u0442\u0447\u0435\u0442 \u043E \u0432\u044B\u0431\u044B\u0442\u0438\u0438/\u043E\u0442\u0431\u0440\u0430\u043A\u043E\u0432\u043A\u0435)",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DropoutReportDtoLp"
+            }
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "userName",
+            "in": "header",
+            "description": "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
+            "required": false,
+            "type": "string",
+            "default": "API"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unique OMS Report ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043E\u0442\u0447\u0435\u0442\u0430 \u043E \u0432\u044B\u0431\u044B\u0442\u0438\u0438/\u043E\u0442\u0431\u0440\u0430\u043A\u043E\u0432\u043A\u0435 \u0432 \u0421\u0423\u0417)",
+            "schema": {
+              "$ref": "#/definitions/ReportResult"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/api/v2/lp/orders": {
       "get": {
         "tags": [
@@ -3641,6 +4758,76 @@
           },
           "404": {
             "description": "Request failed. Report not found. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041E\u0442\u0447\u0435\u0442 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/lp/utilisation": {
+      "post": {
+        "tags": [
+          "API.v2.LP"
+        ],
+        "summary": "Identification Code Aggregation Report (\u041E\u0442\u0447\u0435\u0442 \u043E\u0431 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u041A\u041C)",
+        "operationId": "sendUtilisationReportUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "userName",
+            "in": "header",
+            "description": "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
+            "required": false,
+            "type": "string",
+            "default": "API"
+          },
+          {
+            "in": "body",
+            "name": "utilisationReportDto",
+            "description": "List of the utilized Identification Codes (\u041D\u0430\u043D\u0435\u0441\u0435\u043D\u043D\u044B\u0435 \u041A\u041C)",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UtilisationReportDtoLp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unique OMS Report ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043E\u0442\u0447\u0435\u0442\u0430 \u043E\u0431 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438)",
+            "schema": {
+              "$ref": "#/definitions/ReportResult"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
             "schema": {
               "$ref": "#/definitions/OmsRestResult"
             }
@@ -10040,6 +11227,76 @@
         "deprecated": false
       }
     },
+    "/api/v2/shoes/dropout": {
+      "post": {
+        "tags": [
+          "API.v2.SHOES"
+        ],
+        "summary": "Identification Code Dropout Report (\u041F\u0435\u0440\u0435\u0434\u0430\u0447\u0430 \u043E\u0442\u0447\u0435\u0442\u0430 \u043E \u0432\u044B\u0431\u044B\u0442\u0438\u0438/\u043E\u0442\u0431\u0440\u0430\u043A\u043E\u0432\u043A\u0435 \u041A\u041C)",
+        "operationId": "sendDropoutReportUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "dropoutReportDto",
+            "description": "Identification code dropout report (\u041E\u0442\u0447\u0435\u0442 \u043E \u0432\u044B\u0431\u044B\u0442\u0438\u0438/\u043E\u0442\u0431\u0440\u0430\u043A\u043E\u0432\u043A\u0435)",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DropoutReportDtoShoes"
+            }
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "userName",
+            "in": "header",
+            "description": "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
+            "required": false,
+            "type": "string",
+            "default": "API"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unique OMS Report ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043E\u0442\u0447\u0435\u0442\u0430 \u043E \u0432\u044B\u0431\u044B\u0442\u0438\u0438/\u043E\u0442\u0431\u0440\u0430\u043A\u043E\u0432\u043A\u0435 \u0432 \u0421\u0423\u0417)",
+            "schema": {
+              "$ref": "#/definitions/ReportResult"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/api/v2/shoes/orders": {
       "get": {
         "tags": [
@@ -10364,6 +11621,76 @@
           },
           "404": {
             "description": "Request failed. Report not found. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041E\u0442\u0447\u0435\u0442 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          },
+          "500": {
+            "description": "Request failed. Internal Server Error. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430)",
+            "schema": {
+              "$ref": "#/definitions/OmsRestResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/shoes/utilisation": {
+      "post": {
+        "tags": [
+          "API.v2.SHOES"
+        ],
+        "summary": "Identification Code Aggregation Report (\u041E\u0442\u0447\u0435\u0442 \u043E\u0431 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u041A\u041C)",
+        "operationId": "sendUtilisationReportUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clientToken",
+            "in": "header",
+            "description": "Authorization token (\u0422\u043E\u043A\u0435\u043D \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "omsId",
+            "in": "query",
+            "description": "OMS Id (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0421\u0423\u0417)",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "userName",
+            "in": "header",
+            "description": "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
+            "required": false,
+            "type": "string",
+            "default": "API"
+          },
+          {
+            "in": "body",
+            "name": "utilisationReportDto",
+            "description": "List of the utilized Identification Codes (\u041D\u0430\u043D\u0435\u0441\u0435\u043D\u043D\u044B\u0435 \u041A\u041C)",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UtilisationReportDtoShoes"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unique OMS Report ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043E\u0442\u0447\u0435\u0442\u0430 \u043E\u0431 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438)",
+            "schema": {
+              "$ref": "#/definitions/ReportResult"
+            }
+          },
+          "400": {
+            "description": "Request failed. Incorrect parameters. (\u041E\u043F\u0435\u0440\u0430\u0446\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0435 \u0432\u0445\u043E\u0434\u043D\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B)",
             "schema": {
               "$ref": "#/definitions/OmsRestResult"
             }
@@ -14088,6 +15415,28 @@
       },
       "title": "AggregationReportDtoBeer"
     },
+    "AggregationReportDtoBio": {
+      "type": "object",
+      "required": [
+        "aggregationUnits",
+        "participantId"
+      ],
+      "properties": {
+        "aggregationUnits": {
+          "type": "array",
+          "description": "Array of aggregation unit (\u041C\u0430\u0441\u0441\u0438\u0432 \u0435\u0434\u0438\u043D\u0438\u0446 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438)",
+          "items": {
+            "$ref": "#/definitions/AggregationUnit"
+          }
+        },
+        "participantId": {
+          "type": "string",
+          "example": 3543033591,
+          "description": "Taxpayer Identification Number (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0446\u0438\u043E\u043D\u043D\u044B\u0439 \u043D\u043E\u043C\u0435\u0440 \u043D\u0430\u043B\u043E\u0433\u043E\u043F\u043B\u0430\u0442\u0435\u043B\u044C\u0449\u0438\u043A\u0430)"
+        }
+      },
+      "title": "AggregationReportDtoBio"
+    },
     "AggregationReportDtoLight": {
       "type": "object",
       "required": [
@@ -14554,6 +15903,11 @@
           "type": "boolean",
           "description": "ER pools was exhausted (\u0417\u0430\u043A\u043E\u043D\u0447\u0438\u043B\u0438\u0441\u044C \u041A\u041C \u0432 \u043F\u0443\u043B\u0430\u0445 \u0420\u042D)"
         },
+        "productionOrderId": {
+          "type": "string",
+          "example": "63b5d1cd-919b-4cef-b117-2ce59059bc33",
+          "description": "Production Order ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0441\u0442\u0432\u0435\u043D\u043D\u043E\u0433\u043E \u0437\u0430\u043A\u0430\u0437\u0430)"
+        },
         "rejectionReason": {
           "type": "string",
           "description": "Buffer rejection reason (\u041F\u0440\u0438\u0447\u0438\u043D\u0430 \u043E\u0442\u043A\u043B\u043E\u043D\u0435\u043D\u0438\u044F \u0431\u0443\u0444\u0435\u0440\u0430 \u0421\u0423\u0417-\u043E\u043C)"
@@ -14683,6 +16037,86 @@
       },
       "title": "DropoutReportDtoBeer"
     },
+    "DropoutReportDtoBio": {
+      "type": "object",
+      "required": [
+        "dropoutReason",
+        "sntins"
+      ],
+      "properties": {
+        "dropoutReason": {
+          "type": "string",
+          "example": "DEFECT",
+          "description": "Dropout reason (\u041F\u0440\u0438\u0447\u0438\u043D\u0430 \u0432\u044B\u0431\u044B\u0442\u0438\u044F)",
+          "enum": [
+            "DEFECT",
+            "EXPIRY",
+            "QA_SAMPLES",
+            "PRODUCT_RECALL",
+            "COMPLAINTS",
+            "PRODUCT_TESTING",
+            "DEMO_SAMPLES",
+            "DAMAGE_LOSS",
+            "DESTRUCTION",
+            "LIQUIDATION",
+            "CONFISCATION",
+            "OTHER"
+          ]
+        },
+        "sntins": {
+          "type": "array",
+          "example": [
+            "010133456789433921i7RAGfsaWLTnA",
+            "010133456789433921bRwqoIwHtxzoM"
+          ],
+          "description": "Identification Codes that were dropped out (\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E \u0432\u044B\u0431\u044B\u0432\u0448\u0438\u0445 \u041A\u041C)",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "DropoutReportDtoBio"
+    },
+    "DropoutReportDtoLp": {
+      "type": "object",
+      "required": [
+        "dropoutReason",
+        "sntins"
+      ],
+      "properties": {
+        "dropoutReason": {
+          "type": "string",
+          "example": "DEFECT",
+          "description": "Dropout reason (\u041F\u0440\u0438\u0447\u0438\u043D\u0430 \u0432\u044B\u0431\u044B\u0442\u0438\u044F)",
+          "enum": [
+            "DEFECT",
+            "EXPIRY",
+            "QA_SAMPLES",
+            "PRODUCT_RECALL",
+            "COMPLAINTS",
+            "PRODUCT_TESTING",
+            "DEMO_SAMPLES",
+            "DAMAGE_LOSS",
+            "DESTRUCTION",
+            "LIQUIDATION",
+            "CONFISCATION",
+            "OTHER"
+          ]
+        },
+        "sntins": {
+          "type": "array",
+          "example": [
+            "010133456789433921i7RAGfsaWLTnA",
+            "010133456789433921bRwqoIwHtxzoM"
+          ],
+          "description": "Identification Codes that were dropped out (\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E \u0432\u044B\u0431\u044B\u0432\u0448\u0438\u0445 \u041A\u041C)",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "DropoutReportDtoLp"
+    },
     "DropoutReportDtoMilk": {
       "type": "object",
       "required": [
@@ -14800,6 +16234,46 @@
         }
       },
       "title": "DropoutReportDtoNcp"
+    },
+    "DropoutReportDtoShoes": {
+      "type": "object",
+      "required": [
+        "dropoutReason",
+        "sntins"
+      ],
+      "properties": {
+        "dropoutReason": {
+          "type": "string",
+          "example": "DEFECT",
+          "description": "Dropout reason (\u041F\u0440\u0438\u0447\u0438\u043D\u0430 \u0432\u044B\u0431\u044B\u0442\u0438\u044F)",
+          "enum": [
+            "DEFECT",
+            "EXPIRY",
+            "QA_SAMPLES",
+            "PRODUCT_RECALL",
+            "COMPLAINTS",
+            "PRODUCT_TESTING",
+            "DEMO_SAMPLES",
+            "DAMAGE_LOSS",
+            "DESTRUCTION",
+            "LIQUIDATION",
+            "CONFISCATION",
+            "OTHER"
+          ]
+        },
+        "sntins": {
+          "type": "array",
+          "example": [
+            "010133456789433921i7RAGfsaWLTnA",
+            "010133456789433921bRwqoIwHtxzoM"
+          ],
+          "description": "Identification Codes that were dropped out (\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E \u0432\u044B\u0431\u044B\u0432\u0448\u0438\u0445 \u041A\u041C)",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "DropoutReportDtoShoes"
     },
     "DropoutReportDtoTobacco": {
       "type": "object",
@@ -15107,6 +16581,68 @@
         "wrapped": false
       }
     },
+    "OrderDtoBio": {
+      "type": "object",
+      "required": [
+        "createMethodType",
+        "products",
+        "releaseMethodType"
+      ],
+      "properties": {
+        "contactPerson": {
+          "type": "string",
+          "example": "John Smith (\u0418\u0432\u0430\u043D\u043E\u0432 \u041F\u0435\u0442\u0440 \u0421\u0438\u0434\u043E\u0440\u043E\u0432\u0438\u0447)",
+          "description": "Contact Person (\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u043E\u0435 \u043B\u0438\u0446\u043E)"
+        },
+        "createMethodType": {
+          "type": "string",
+          "example": "SELF_MADE",
+          "description": "Marking Manufacturing Type (\u0421\u043F\u043E\u0441\u043E\u0431 \u0438\u0437\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D\u0438\u044F)",
+          "enum": [
+            "SELF_MADE",
+            "CEM",
+            "CM",
+            "CL",
+            "CA"
+          ]
+        },
+        "productionOrderId": {
+          "type": "string",
+          "example": "63b5d1cd-919b-4cef-b117-2ce59059bc33",
+          "description": "Production Order ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0441\u0442\u0432\u0435\u043D\u043D\u043E\u0433\u043E \u0437\u0430\u043A\u0430\u0437\u0430)"
+        },
+        "products": {
+          "type": "array",
+          "description": "Product list (\u0421\u043F\u0438\u0441\u043E\u043A \u0442\u043E\u0432\u0430\u0440\u043E\u0432)",
+          "items": {
+            "$ref": "#/definitions/OrderProductBio"
+          }
+        },
+        "releaseMethodType": {
+          "type": "string",
+          "example": "IMPORT",
+          "description": "Product Release Type (\u0421\u043F\u043E\u0441\u043E\u0431 \u0432\u044B\u043F\u0443\u0441\u043A\u0430 \u0442\u043E\u0432\u0430\u0440\u043E\u0432 \u0432 \u043E\u0431\u043E\u0440\u043E\u0442)",
+          "enum": [
+            "PRODUCTION",
+            "IMPORT",
+            "REMAINS",
+            "CROSSBORDER",
+            "REMARK",
+            "COMMISSION",
+            "CONTRACT_PRODUCTION"
+          ]
+        },
+        "serviceProviderId": {
+          "type": "string"
+        }
+      },
+      "title": "OrderDtoBio",
+      "xml": {
+        "name": "bio",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
     "OrderDtoLight": {
       "type": "object",
       "required": [
@@ -15392,7 +16928,7 @@
       },
       "title": "OrderDtoNcp",
       "xml": {
-        "name": "OrderDtoNcp",
+        "name": "ncp",
         "attribute": false,
         "wrapped": false
       }
@@ -15728,11 +17264,6 @@
             "COMMISSION",
             "CONTRACT_PRODUCTION"
           ]
-        },
-        "remainsAvailable": {
-          "type": "boolean",
-          "example": true,
-          "description": "\u041F\u0440\u0438\u0437\u043D\u0430\u043A \u0442\u043E\u0433\u043E, \u0447\u0442\u043E \u0442\u043E\u0432\u0430\u0440 \u043F\u0440\u043E\u0438\u0437\u0432\u0435\u0434\u0435\u043D/\u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D \u0434\u043E \u0434\u0430\u0442\u044B \u0437\u0430\u043F\u0440\u0435\u0442\u0430 \u043E\u0431\u043E\u0440\u043E\u0442\u0430 \u043D\u0435\u043C\u0430\u0440\u043A\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0445 \u0442\u043E\u0432\u0430\u0440\u043E\u0432 \u043F\u043E \u0434\u0430\u043D\u043D\u043E\u0439 \u0422\u0413"
         },
         "serviceProviderId": {
           "type": "string"
@@ -16132,6 +17663,74 @@
         "wrapped": false
       }
     },
+    "OrderProductBio": {
+      "type": "object",
+      "required": [
+        "gtin",
+        "quantity",
+        "serialNumberType",
+        "templateId"
+      ],
+      "properties": {
+        "cisType": {
+          "type": "string",
+          "enum": [
+            "UNIT",
+            "BUNDLE",
+            "SET",
+            "GROUP"
+          ]
+        },
+        "gtin": {
+          "type": "string",
+          "example": "01334567894339",
+          "description": "Product GTIN (GTIN \u0442\u043E\u0432\u0430\u0440\u0430)"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32",
+          "example": 3,
+          "description": "Requested Identification Code quantity [Required only if serialNumberType = OPERATOR] (\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u041A\u041C [\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u0435\u043D, \u0435\u0441\u043B\u0438 serialNumberType = SELF_MADE])",
+          "minimum": 1,
+          "maximum": 150000,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        },
+        "serialNumberType": {
+          "type": "string",
+          "example": "SELF_MADE",
+          "description": "Serial number source type (\u0421\u043F\u043E\u0441\u043E\u0431 \u0444\u043E\u0440\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0438\u043D\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u0441\u0435\u0440\u0438\u0439\u043D\u043E\u0433\u043E \u043D\u043E\u043C\u0435\u0440\u0430)",
+          "enum": [
+            "SELF_MADE",
+            "OPERATOR"
+          ]
+        },
+        "serialNumbers": {
+          "type": "array",
+          "example": [],
+          "description": "Serial numbers [Required only if serialNumberType = SELF_MADE] (\u0421\u043F\u0438\u0441\u043E\u043A \u0441\u0435\u0440\u0438\u0439\u043D\u044B\u0445 \u043D\u043E\u043C\u0435\u0440\u043E\u0432 [\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u0435\u043D, \u0435\u0441\u043B\u0438 serialNumberType = SELF_MADE])",
+          "items": {
+            "type": "string"
+          }
+        },
+        "templateId": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "Identification Code Template ID (\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440 \u0448\u0430\u0431\u043B\u043E\u043D\u0430 \u041A\u041C)",
+          "minimum": 1,
+          "maximum": 22,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        }
+      },
+      "title": "OrderProductBio",
+      "xml": {
+        "name": "product",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
     "OrderProductFashion": {
       "type": "object",
       "required": [
@@ -16330,7 +17929,12 @@
           "exclusiveMaximum": false
         }
       },
-      "title": "OrderProductNcp"
+      "title": "OrderProductNcp",
+      "xml": {
+        "name": "product",
+        "attribute": false,
+        "wrapped": false
+      }
     },
     "OrderProductOtp": {
       "type": "object",
@@ -17170,7 +18774,8 @@
               "water",
               "furs",
               "beer",
-              "ncp"
+              "ncp",
+              "bio"
             ]
           }
         },
@@ -17343,6 +18948,39 @@
       },
       "title": "UtilisationReportDtoBicycle"
     },
+    "UtilisationReportDtoBio": {
+      "type": "object",
+      "required": [
+        "sntins",
+        "usageType"
+      ],
+      "properties": {
+        "sntins": {
+          "type": "array",
+          "example": [
+            "010133456789433921i7RAGfsaWLTnA",
+            "010133456789433921bRwqoIwHtxzoM"
+          ],
+          "description": "List of Utilized Identification Codes (\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E\u0431 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u043D\u044B\u0445 \u041A\u041C)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "usageType": {
+          "type": "string",
+          "example": "USED_FOR_PRODUCTION",
+          "description": "Usage type (\u0422\u0438\u043F \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F)",
+          "enum": [
+            "USED_FOR_PRODUCTION",
+            "SENT_TO_PRINTER",
+            "PRINTED",
+            "PRINTER_LOST",
+            "VERIFIED"
+          ]
+        }
+      },
+      "title": "UtilisationReportDtoBio"
+    },
     "UtilisationReportDtoLight": {
       "type": "object",
       "required": [
@@ -17375,6 +19013,39 @@
         }
       },
       "title": "UtilisationReportDtoLight"
+    },
+    "UtilisationReportDtoLp": {
+      "type": "object",
+      "required": [
+        "sntins",
+        "usageType"
+      ],
+      "properties": {
+        "sntins": {
+          "type": "array",
+          "example": [
+            "010133456789433921i7RAGfsaWLTnA",
+            "010133456789433921bRwqoIwHtxzoM"
+          ],
+          "description": "List of Utilized Identification Codes (\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E\u0431 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u043D\u044B\u0445 \u041A\u041C)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "usageType": {
+          "type": "string",
+          "example": "USED_FOR_PRODUCTION",
+          "description": "Usage type (\u0422\u0438\u043F \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F)",
+          "enum": [
+            "USED_FOR_PRODUCTION",
+            "SENT_TO_PRINTER",
+            "PRINTED",
+            "PRINTER_LOST",
+            "VERIFIED"
+          ]
+        }
+      },
+      "title": "UtilisationReportDtoLp"
     },
     "UtilisationReportDtoMilk": {
       "type": "object",
@@ -17634,6 +19305,39 @@
         }
       },
       "title": "UtilisationReportDtoPharma"
+    },
+    "UtilisationReportDtoShoes": {
+      "type": "object",
+      "required": [
+        "sntins",
+        "usageType"
+      ],
+      "properties": {
+        "sntins": {
+          "type": "array",
+          "example": [
+            "010133456789433921i7RAGfsaWLTnA",
+            "010133456789433921bRwqoIwHtxzoM"
+          ],
+          "description": "List of Utilized Identification Codes (\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E\u0431 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u043D\u044B\u0445 \u041A\u041C)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "usageType": {
+          "type": "string",
+          "example": "USED_FOR_PRODUCTION",
+          "description": "Usage type (\u0422\u0438\u043F \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F)",
+          "enum": [
+            "USED_FOR_PRODUCTION",
+            "SENT_TO_PRINTER",
+            "PRINTED",
+            "PRINTER_LOST",
+            "VERIFIED"
+          ]
+        }
+      },
+      "title": "UtilisationReportDtoShoes"
     },
     "UtilisationReportDtoTobacco": {
       "type": "object",
