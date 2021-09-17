@@ -17520,7 +17520,10 @@
             "READY_TO_SEND",
             "REJECTED",
             "SENT",
-            "PROCESSED"
+            "PROCESSED",
+            "SUCCESS",
+            "FAILED",
+            "PARTIALLY"
           ]
         }
       },
