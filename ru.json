@@ -18318,6 +18318,11 @@
             "GROUP"
           ]
         },
+        "exporterTaxpayerId": {
+          "type": "string",
+          "example": 1234567890,
+          "description": "\u0418\u041D\u041D/\u0423\u041D\u0411 (\u0438\u043B\u0438 \u0430\u043D\u0430\u043B\u043E\u0433) \u044D\u043A\u0441\u043F\u043E\u0440\u0442\u0435\u0440\u0430"
+        },
         "gtin": {
           "type": "string",
           "example": "01334567894339",
