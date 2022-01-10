@@ -2506,7 +2506,8 @@
             "REMAINS",
             "CROSSBORDER",
             "REMARK",
-            "CONTRACT_PRODUCTION"
+            "CONTRACT_PRODUCTION",
+            "EAEU"
           ]
         },
         "serviceProviderId": {
@@ -2593,7 +2594,8 @@
             "REMAINS",
             "CROSSBORDER",
             "REMARK",
-            "CONTRACT_PRODUCTION"
+            "CONTRACT_PRODUCTION",
+            "EAEU"
           ]
         },
         "serviceProviderId": {
