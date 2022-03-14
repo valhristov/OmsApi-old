@@ -1,4 +1,4 @@
-curl https://suz.sandbox.crpt.tech/v2/api-docs > ru.json
+curl https://suz.sandbox.crptech.ru/v2/api-docs > ru.json
 .\FixJson\FixJson\bin\Debug\net5.0\FixJson.exe ru.json
 
 curl https://suzcloud.stage.ismet.kz/v2/api-docs > kz.json
